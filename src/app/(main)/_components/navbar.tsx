@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useSelectedLayoutSegments } from "next/navigation";
 
 export function Navbar() {
-  const [first] = useSelectedLayoutSegments();
+  const first = useSelectedLayoutSegments()[1];
 
   return (
     <nav className="flex gap-7 text-sm font-medium items-center">
