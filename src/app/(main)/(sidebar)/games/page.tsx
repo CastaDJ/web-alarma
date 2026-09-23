@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function GamesPage() {
   const data = [
     {
@@ -44,8 +46,9 @@ export default function GamesPage() {
       </header>
       <section className="w-full flex gap-4 flex-wrap">
         {data.map(({ name, size, difficulty }) => (
-          <article
+          <Link
             key={name}
+            href="/games/replay"
             className="flex justify-between bg-white w-full border border-solid border-hard-gray rounded-[14px] px-4.5 gap-4 py-5 items-center cursor-pointer hover:outline-1 hover:outline-primary-200"
           >
             <h2 className="font-bold flex-[60%]">{name}</h2>
@@ -60,7 +63,7 @@ export default function GamesPage() {
                 />
               </div>
             </div>
-          </article>
+          </Link>
         ))}
       </section>
     </main>

@@ -1,4 +1,12 @@
+"use client";
+
+import { useSelectedLayoutSegments } from "next/navigation";
+
 export default function SidebarLayout({ children }: LayoutProps<"/">) {
+  const second = useSelectedLayoutSegments()[1];
+
+  if (second === "replay") return children;
+
   return (
     <section className="flex">
       <aside className="p-6 sticky top-26.25 min-w-66 h-[calc(100dvh-6.5625rem)] border-r border-solid border-hard-gray flex flex-col gap-6">
