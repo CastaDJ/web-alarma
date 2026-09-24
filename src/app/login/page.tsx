@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { LoginForm } from "./_components/login-form";
 
 export default function LoginPage() {
   return (
@@ -27,6 +28,7 @@ export default function LoginPage() {
               Inicia sesión para gestionar tus alarmas y retos.
             </p>
           </header>
+          <LoginForm />
         </section>
       </section>
     </main>
