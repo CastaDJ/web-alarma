@@ -24,6 +24,13 @@ export function LoginForm() {
           className="bg-[#EFEFEC] border border-solid border-hard-gray rounded-lg px-3.5 py-2.5 text-sm font-normal outline-primary"
         />
       </label>
+
+      <button
+        type="submit"
+        className="font-bold text-sm bg-primary text-white py-3 px-5.5 rounded-[14px] w-full cursor-pointer hover:bg-primary-200 active:bg-primary-200"
+      >
+        Iniciar sesión
+      </button>
     </form>
   );
 }
