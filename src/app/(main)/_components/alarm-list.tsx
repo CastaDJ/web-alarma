@@ -1,4 +1,7 @@
+"use client";
+
 import { Plus } from "lucide-react";
+import { useState } from "react";
 
 type Alarm = {
   id: number;
@@ -15,6 +18,7 @@ const initialAlarms: Alarm[] = [
 
 export function AlarmList() {
   const alarms = initialAlarms;
+  const [selectedId, setSelectedId] = useState(initialAlarms[0].id);
 
   return (
     <section className="flex flex-col gap-4 min-w-75 flex-[1_1_25%]">
@@ -31,7 +35,12 @@ export function AlarmList() {
       {alarms.map(({ id, name, time }) => (
         <article
           key={id}
-          className="flex flex-col gap-2 border border-solid rounded-[14px] p-4.5 bg-white border-hard-gray"
+          onClick={() => setSelectedId(id)}
+          className={`flex flex-col gap-2 border border-solid rounded-[14px] p-4.5 cursor-pointer hover:outline-1 hover:outline-primary-200 ${
+            selectedId === id
+              ? "bg-primary-100/40 border-primary-100"
+              : "bg-white border-hard-gray"
+          }`}
         >
           <h2 className="text-[13px] font-bold">{name}</h2>
           <hr className="border-hard-gray w-24" />
