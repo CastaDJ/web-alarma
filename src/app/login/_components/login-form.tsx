@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function LoginForm() {
   return (
     <form className="flex flex-col gap-4">
@@ -25,12 +27,26 @@ export function LoginForm() {
         />
       </label>
 
+      <Link
+        href="/login"
+        className="text-xs text-primary self-end hover:underline"
+      >
+        ¿Olvidaste tu contraseña?
+      </Link>
+
       <button
         type="submit"
         className="font-bold text-sm bg-primary text-white py-3 px-5.5 rounded-[14px] w-full cursor-pointer hover:bg-primary-200 active:bg-primary-200"
       >
         Iniciar sesión
       </button>
+
+      <p className="text-xs text-gray-500">
+        ¿No tienes cuenta?{" "}
+        <Link href="/login" className="text-primary hover:underline">
+          Crear cuenta
+        </Link>
+      </p>
     </form>
   );
 }
