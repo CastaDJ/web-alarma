@@ -47,6 +47,9 @@ export default function MainPage() {
           </article>
           <hr className="border-hard-gray" />
         </div>
+        <p className="text-xs">
+          Tu mejor racha fue de 4 mañanas sin postergar.
+        </p>
       </article>
     </main>
   );
