@@ -1,3 +1,5 @@
+import { Plus } from "lucide-react";
+
 type Alarm = {
   id: number;
   name: string;
@@ -18,6 +20,12 @@ export function AlarmList() {
     <section className="flex flex-col gap-4 min-w-75 flex-[1_1_25%]">
       <header className="flex items-center justify-between">
         <h1 className="font-bold text-[22px]">Tus alarmas</h1>
+        <button
+          aria-label="Agregar alarma"
+          className="flex items-center justify-center size-8 rounded-full bg-primary text-white cursor-pointer hover:bg-primary-200 active:bg-primary-200"
+        >
+          <Plus size={18} />
+        </button>
       </header>
 
       {alarms.map(({ id, name, time }) => (
