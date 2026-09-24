@@ -17,8 +17,16 @@ const initialAlarms: Alarm[] = [
 ];
 
 export function AlarmList() {
-  const alarms = initialAlarms;
+  const [alarms, setAlarms] = useState(initialAlarms);
   const [selectedId, setSelectedId] = useState(initialAlarms[0].id);
+
+  function toggleAlarm(id: number) {
+    setAlarms((current) =>
+      current.map((alarm) =>
+        alarm.id === id ? { ...alarm, active: !alarm.active } : alarm,
+      ),
+    );
+  }
 
   return (
     <section className="flex flex-col gap-4 min-w-75 flex-[1_1_25%]">
@@ -32,7 +40,7 @@ export function AlarmList() {
         </button>
       </header>
 
-      {alarms.map(({ id, name, time }) => (
+      {alarms.map(({ id, name, time, active }) => (
         <article
           key={id}
           onClick={() => setSelectedId(id)}
@@ -45,6 +53,29 @@ export function AlarmList() {
           <h2 className="text-[13px] font-bold">{name}</h2>
           <hr className="border-hard-gray w-24" />
           <span className="font-bold text-[28px]">{time}</span>
+          <div className="flex flex-col gap-1">
+            <button
+              role="switch"
+              aria-checked={active}
+              aria-label={`${active ? "Desactivar" : "Activar"} ${name}`}
+              onClick={(event) => {
+                event.stopPropagation();
+                toggleAlarm(id);
+              }}
+              className={`relative h-5 w-9 rounded-full cursor-pointer transition-colors ${
+                active ? "bg-primary" : "bg-hard-gray"
+              }`}
+            >
+              <span
+                className={`absolute top-0.5 left-0.5 size-4 rounded-full bg-white transition-transform ${
+                  active ? "translate-x-4" : ""
+                }`}
+              />
+            </button>
+            <span className="text-[11px] text-gray-500">
+              {active ? "Activa" : "Inactiva"}
+            </span>
+          </div>
         </article>
       ))}
     </section>
